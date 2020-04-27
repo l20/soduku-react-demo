@@ -30,7 +30,7 @@ const sudoku = new SudoKu(); // 数独
 const blankArrs = new Map(); // 空白答案填入值存储
 let correctArrs = new Map(); // 记录正确答案的集合
 
-const Board = ({ difficultyLeve = 0 }) => {
+const Board = ({ difficultyLevel = 0 }) => {
   const [btnDisabled, setBtnDisb] = useState(false); // 生成按钮是否可点击控制
   const [array, setSudoArr] = useState(null); // 生成的数独原数组
   const [fullArr, setFullArr] = useState(null); // 备份的原数据
@@ -38,16 +38,16 @@ const Board = ({ difficultyLeve = 0 }) => {
 
   /**
    * 难度系数
-   * @param {number} difficultyLeve
+   * @param {number} difficultyLevel
    */
-  const getDifficultyRatios = (difficultyLeve) => {
-    if (difficultyRatios.length - 1 < difficultyLeve) {
+  const getDifficultyRatios = (difficultyLevel) => {
+    if (difficultyRatios.length - 1 < difficultyLevel) {
       return difficultyRatios[difficultyRatios.length - 1];
-    } else if (difficultyLeve < 0) {
+    } else if (difficultyLevel < 0) {
       return difficultyRatios[0];
     }
 
-    return difficultyRatios[difficultyLeve];
+    return difficultyRatios[difficultyLevel];
   };
 
   /**
@@ -80,7 +80,7 @@ const Board = ({ difficultyLeve = 0 }) => {
     // console.log("生成的数独：", state.fullArr);
 
     // 难度系数
-    const difficultyRatio = getDifficultyRatios(difficultyLeve);
+    const difficultyRatio = getDifficultyRatios(difficultyLevel);
     // 按难度系数随机遮挡
     const shelters = sudoku.shelter(fullArr, difficultyRatio);
     // 保存正确答案
